@@ -15,11 +15,21 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  icons: {
+    icon: [{ url: '/Rooted-Logo-favicon.png', type: 'image/png' }],
+    apple: '/Rooted-Logo-favicon.png',
+    shortcut: '/Rooted-Logo-favicon.png',
+  },
   title: 'Hormone Therapy & Weight Loss Conway AR | Rooted Health',
   description: 'Cash-pay hormone therapy, GLP-1 weight loss, Botox, and primary care in Conway, AR. Memberships from $99/mo. No insurance required.',
   metadataBase: new URL('https://rootedhealthmember.janeapp.com'),
   openGraph: {
-    title: 'Hormone Therapy & Weight Loss Conway AR | Rooted Health',
+    icons: {
+    icon: [{ url: '/Rooted-Logo-favicon.png', type: 'image/png' }],
+    apple: '/Rooted-Logo-favicon.png',
+    shortcut: '/Rooted-Logo-favicon.png',
+  },
+  title: 'Hormone Therapy & Weight Loss Conway AR | Rooted Health',
     description: 'Cash-pay hormone therapy, GLP-1 weight loss, Botox, and primary care in Conway, AR. Memberships from $99/mo. No insurance required.',
     url: 'https://rootedhealthmember.janeapp.com',
     siteName: 'Rooted Health Hormones & MedSpa',
@@ -39,7 +49,7 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E2DDD4]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
-              <a href="/" className="flex items-center flex-shrink-0"><img src="/Rooted Logo.png" alt="Rooted Health" className="h-8 w-auto" /></a>
+              <a href="/" className="flex items-center flex-shrink-0"><img src="/Rooted Logo.png" alt="Rooted Health" className="h-11 w-auto" /></a>
               <nav className="hidden md:flex items-center gap-8">
                 <a href="/memberships" className="text-[#1E1D1A] hover:text-[#1D9E75] font-medium transition-colors">
                   Memberships
