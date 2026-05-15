@@ -17,11 +17,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Hormone Therapy & Weight Loss Conway AR | Rooted Health',
   description: 'Cash-pay hormone therapy, GLP-1 weight loss, Botox, and primary care in Conway, AR. Memberships from $99/mo. No insurance required.',
-  metadataBase: new URL('https://rootedhealthmember.com'),
+  metadataBase: new URL('https://rootedhealthmember.janeapp.com'),
   openGraph: {
     title: 'Hormone Therapy & Weight Loss Conway AR | Rooted Health',
     description: 'Cash-pay hormone therapy, GLP-1 weight loss, Botox, and primary care in Conway, AR. Memberships from $99/mo. No insurance required.',
-    url: 'https://rootedhealthmember.com',
+    url: 'https://rootedhealthmember.janeapp.com',
     siteName: 'Rooted Health Hormones & MedSpa',
     locale: 'en_US',
     type: 'website',
