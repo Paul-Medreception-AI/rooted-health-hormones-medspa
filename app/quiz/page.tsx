@@ -1,234 +1,265 @@
-import React from 'react'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
+interface Answer {
+  step: number
+  value: string
+}
+
 export default function QuizPage() {
+  const [currentStep, setCurrentStep] = useState(0)
+  const [answers, setAnswers] = useState<Answer[]>([])
+  const [showResult, setShowResult] = useState(false)
+
+  const questions = [
+    {
+      question: "What's your main health goal?",
+      options: [
+        'Hormone Balance',
+        'Weight Loss',
+        'Primary Care',
+        'Full Optimization'
+      ]
+    },
+    {
+      question: "Which symptoms bother you most?",
+      options: [
+        'Fatigue & Brain Fog',
+        'Weight Gain & Metabolism',
+        'Mood & Sleep',
+        'Multiple Areas'
+      ]
+    },
+    {
+      question: "How important is in-person care vs virtual?",
+      options: [
+        'Fully Virtual',
+        'Mix of Both',
+        'Prefer In-Person'
+      ]
+    },
+    {
+      question: "What's your monthly budget?",
+      options: [
+        '$99-149/mo',
+        '$150-299/mo',
+        '$300+/mo'
+      ]
+    },
+    {
+      question: "How soon do you want to start?",
+      options: [
+        'ASAP',
+        'Within a month',
+        'Just exploring'
+      ]
+    }
+  ]
+
+  const handleAnswer = (value: string) => {
+    const newAnswers = [...answers, { step: currentStep, value }]
+    setAnswers(newAnswers)
+
+    if (currentStep === 4) {
+      setShowResult(true)
+    } else {
+      setCurrentStep(currentStep + 1)
+    }
+  }
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1)
+      setAnswers(answers.slice(0, -1))
+    }
+  }
+
+  const handleStartOver = () => {
+    setCurrentStep(0)
+    setAnswers([])
+    setShowResult(false)
+  }
+
+  const getRecommendation = () => {
+    const answerValues = answers.map(a => a.value)
+    
+    const hasWeightLoss = answerValues.includes('Weight Loss') || answerValues.includes('Weight Gain & Metabolism')
+    const hasHighBudget = answerValues.includes('$300+/mo')
+    const hasMidBudget = answerValues.includes('$150-299/mo')
+    const hasLowBudget = answerValues.includes('$99-149/mo')
+    const hasHormone = answerValues.includes('Hormone Balance')
+    const hasFatigue = answerValues.includes('Fatigue & Brain Fog')
+    const hasMultiple = answerValues.includes('Multiple Areas')
+    const isExploring = answerValues.includes('Just exploring')
+
+    if (hasWeightLoss || hasHighBudget) {
+      return {
+        name: 'Elite GLP-1 Program',
+        price: '$349/mo',
+        benefits: [
+          'Prescription GLP-1 medications (semaglutide or tirzepatide)',
+          'Weekly provider check-ins and dose adjustments',
+          'Comprehensive metabolic and hormone panel',
+          'Personalized nutrition and lifestyle coaching',
+          'Priority scheduling and 24/7 messaging access'
+        ]
+      }
+    }
+
+    if (hasHormone || hasFatigue || hasMultiple || hasMidBudget) {
+      return {
+        name: 'Hormone Optimization',
+        price: '$149-199/mo',
+        benefits: [
+          'Comprehensive hormone testing and analysis',
+          'Bioidentical hormone replacement therapy',
+          'Monthly provider consultations',
+          'Supplement protocols and nutritional guidance',
+          'Ongoing monitoring and adjustments'
+        ]
+      }
+    }
+
+    return {
+      name: 'Virtual DPC',
+      price: '$99/mo',
+      benefits: [
+        'Unlimited virtual visits with LaDonna Walker NP',
+        'Same-day or next-day appointments',
+        'Direct messaging access to your provider',
+        'Prescription management and refills',
+        'Preventive care and wellness guidance'
+      ]
+    }
+  }
+
+  const recommendation = showResult ? getRecommendation() : null
+
+  const progressPercentage = ((currentStep + 1) / 5) * 100
+
   return (
-    <main className="min-h-screen bg-[#F7F4EE]">
-      <section className="bg-gradient-to-br from-[#0F6E56] to-[#1D9E75] py-24 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-6xl font-bold mb-6">
+    <div className="min-h-screen bg-[#F7F4EE]">
+      <div className="bg-gradient-to-br from-[#0F6E56] to-[#1D9E75] py-20 text-white text-center">
+        <div className="max-w-4xl mx-auto px-6">
+          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl font-bold mb-4">
             Find Your Perfect Membership
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Discover personalized healthcare that adapts to your unique wellness journey
+          <p className="font-[family-name:var(--font-dm-sans)] text-xl opacity-90">
+            Answer 5 quick questions to get a personalized recommendation
           </p>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-4 -mt-8">
-        <div className="bg-white rounded-2xl p-12 max-w-2xl mx-auto text-center shadow-xl">
-          <div className="mb-8">
-            <svg className="w-20 h-20 mx-auto text-[#1D9E75] mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl font-bold text-[#1E1D1A] mb-4">
-            Your Personalized Path to Wellness
-          </h2>
-          <p className="text-lg text-[#1E1D1A]/70 mb-8 leading-relaxed">
-            Our interactive quiz helps you discover which membership tier aligns with your health goals, 
-            lifestyle, and wellness priorities. Whether you're seeking preventive care, hormone optimization, 
-            or comprehensive weight management, we'll guide you to the perfect fit.
-          </p>
-          <div className="border-t border-[#1D9E75]/20 pt-8">
-            <p className="text-[#1E1D1A]/80 mb-6 font-medium">
-              Ready to get started? Let's discuss your unique needs in a complimentary consultation.
-            </p>
-            <Link 
-              href="/contact" 
-              className="inline-block bg-[#1D9E75] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#0F6E56] transition-colors"
-            >
-              Book a Free Consultation
-            </Link>
-          </div>
         </div>
       </div>
 
-      <section className="py-20 max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl font-bold text-[#1E1D1A] mb-4">
-            Compare Our Membership Tiers
-          </h2>
-          <p className="text-lg text-[#1E1D1A]/70">
-            Choose the level of care that matches your wellness journey
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-transparent hover:border-[#1D9E75] transition-all">
-            <div className="text-center mb-6">
-              <h3 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-[#1E1D1A] mb-2">
-                Virtual DPC
-              </h3>
-              <div className="flex items-baseline justify-center gap-2 mb-4">
-                <span className="text-5xl font-bold text-[#1D9E75]">$99</span>
-                <span className="text-[#1E1D1A]/60">/month</span>
-              </div>
-              <p className="text-[#1E1D1A]/70">Essential primary care access</p>
+      <div className="max-w-2xl mx-auto px-6 mt-12 mb-20">
+        {!showResult ? (
+          <div className="bg-white rounded-2xl shadow-lg p-10">
+            <div className="w-full bg-[#E2DDD4] h-2 rounded-full mb-8">
+              <div
+                className="bg-[#1D9E75] h-2 rounded-full transition-all duration-300"
+                style={{ width: `${progressPercentage}%` }}
+              />
             </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">24/7 telehealth access</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Same-day appointments</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Unlimited messaging</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Wellness planning</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">At-cost prescriptions</span>
-              </li>
-            </ul>
-            <Link 
-              href="/contact" 
-              className="block w-full text-center bg-[#F7F4EE] text-[#1D9E75] px-6 py-3 rounded-full font-semibold hover:bg-[#1D9E75] hover:text-white transition-colors"
-            >
-              Get Started
-            </Link>
+
+            <div className="flex justify-between items-center mb-6">
+              <p className="text-[#7A7870] text-sm font-[family-name:var(--font-dm-sans)]">
+                Step {currentStep + 1} of 5
+              </p>
+              {currentStep > 0 && (
+                <button
+                  onClick={handleBack}
+                  className="text-[#7A7870] text-sm underline cursor-pointer font-[family-name:var(--font-dm-sans)] hover:text-[#1E1D1A]"
+                >
+                  Back
+                </button>
+              )}
+            </div>
+
+            <h2 className="font-[family-name:var(--font-cormorant)] text-2xl font-semibold text-[#1E1D1A] mb-8">
+              {questions[currentStep].question}
+            </h2>
+
+            <div className="space-y-3">
+              {questions[currentStep].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswer(option)}
+                  className="w-full border-2 border-[#E2DDD4] rounded-xl p-4 text-left text-[#1E1D1A] hover:border-[#1D9E75] hover:bg-[#E1F5EE] transition-all font-[family-name:var(--font-dm-sans)]"
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
           </div>
-
-          <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-[#1D9E75] relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#1D9E75] text-white px-4 py-1 rounded-full text-sm font-semibold">
-              Most Popular
+        ) : (
+          <div className="bg-white rounded-2xl shadow-lg p-10">
+            <div className="text-center mb-8">
+              <h2 className="font-[family-name:var(--font-cormorant)] text-4xl font-bold text-[#1E1D1A] mb-2">
+                Your Recommended Plan
+              </h2>
+              <p className="text-[#7A7870] font-[family-name:var(--font-dm-sans)]">
+                Based on your answers, we recommend:
+              </p>
             </div>
-            <div className="text-center mb-6">
+
+            <div className="bg-gradient-to-br from-[#E1F5EE] to-white border-2 border-[#1D9E75] rounded-xl p-8 mb-8">
               <h3 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-[#1E1D1A] mb-2">
-                Hormone Optimization
+                {recommendation?.name}
               </h3>
-              <div className="flex items-baseline justify-center gap-2 mb-4">
-                <span className="text-5xl font-bold text-[#1D9E75]">$149</span>
-                <span className="text-[#1E1D1A]/60">- $199/mo</span>
-              </div>
-              <p className="text-[#1E1D1A]/70">Complete hormone therapy</p>
-            </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80 font-semibold">Everything in Virtual DPC</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Comprehensive hormone testing</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">TRT & HRT medications included</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Monthly monitoring & adjustments</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Nutrition & lifestyle coaching</span>
-              </li>
-            </ul>
-            <Link 
-              href="/contact" 
-              className="block w-full text-center bg-[#1D9E75] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0F6E56] transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
+              <p className="text-[#1D9E75] font-bold text-2xl mb-6 font-[family-name:var(--font-dm-sans)]">
+                {recommendation?.price}
+              </p>
 
-          <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-transparent hover:border-[#1D9E75] transition-all">
-            <div className="text-center mb-6">
-              <h3 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-[#1E1D1A] mb-2">
-                Elite GLP-1
-              </h3>
-              <div className="flex items-baseline justify-center gap-2 mb-4">
-                <span className="text-5xl font-bold text-[#1D9E75]">$349</span>
-                <span className="text-[#1E1D1A]/60">/month</span>
-              </div>
-              <p className="text-[#1E1D1A]/70">Complete weight management</p>
-            </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80 font-semibold">Everything in Hormone Optimization</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Semaglutide or Tirzepatide included</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Weekly medication management</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Custom nutrition & fitness plans</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <svg className="w-6 h-6 text-[#1D9E75] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-[#1E1D1A]/80">Body composition tracking</span>
-              </li>
-            </ul>
-            <Link 
-              href="/contact" 
-              className="block w-full text-center bg-[#F7F4EE] text-[#1D9E75] px-6 py-3 rounded-full font-semibold hover:bg-[#1D9E75] hover:text-white transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </section>
+              <ul className="space-y-3 mb-8">
+                {recommendation?.benefits.map((benefit, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start text-[#1E1D1A] font-[family-name:var(--font-dm-sans)]"
+                  >
+                    <svg
+                      className="w-6 h-6 text-[#1D9E75] mr-3 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
 
-      <section className="bg-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl md:text-4xl font-bold text-[#1E1D1A] mb-4">
-            Still Not Sure Which Is Right for You?
-          </h2>
-          <p className="text-lg text-[#1E1D1A]/70 mb-8">
-            Schedule a complimentary consultation with our team to discuss your health goals and find your perfect fit.
-          </p>
-          <Link 
-            href="/contact" 
-            className="inline-block bg-[#1D9E75] text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-[#0F6E56] transition-colors"
-          >
-            Book Your Free Consultation
-          </Link>
-        </div>
-      </section>
-    </main>
+              <div className="space-y-3">
+                <a
+                  href="/contact"
+                  className="bg-[#1D9E75] hover:bg-[#0F6E56] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-block w-full text-center font-[family-name:var(--font-dm-sans)]"
+                >
+                  Book a Free Consultation
+                </a>
+                <Link
+                  href="/memberships"
+                  className="border-2 border-[#1D9E75] text-[#1D9E75] hover:bg-[#E1F5EE] px-8 py-4 rounded-lg font-semibold transition-colors inline-block w-full text-center font-[family-name:var(--font-dm-sans)]"
+                >
+                  See All Plans
+                </Link>
+              </div>
+            </div>
+
+            <button
+              onClick={handleStartOver}
+              className="text-[#7A7870] text-sm underline cursor-pointer mx-auto block hover:text-[#1E1D1A] font-[family-name:var(--font-dm-sans)]"
+            >
+              Start Over
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
