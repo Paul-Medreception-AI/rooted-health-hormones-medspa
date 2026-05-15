@@ -30,7 +30,7 @@ export default function ContactPage() {
                 Fill out the form below and our team will get back to you within 24 hours.
               </p>
               
-              <form method="POST" action="https://formspree.io/f/placeholder" className="space-y-6">
+              <form method="POST" action="mailto:bekinditmatters@icloud.com" className="space-y-6">
                 <div>
                   <label htmlFor="name" className="font-[family-name:var(--font-dm-sans)] block text-sm font-semibold text-gray-700 mb-2">
                     Full Name *
