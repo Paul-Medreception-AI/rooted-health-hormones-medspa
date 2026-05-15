@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://rootedhealthmember.com/quiz', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://rootedhealthmember.com/about', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://rootedhealthmember.com/contact', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://rootedhealthmember.com/spaah', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://rootedhealthmember.com/cabot', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: 'https://rootedhealthmember.com/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: 'https://rootedhealthmember.com/terms', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: 'https://rootedhealthmember.com/sms-terms', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
