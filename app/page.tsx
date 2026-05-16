@@ -3,8 +3,9 @@ import Link from 'next/link'
 export default function HomePage() {
   return (
     <main>
-      <section className="min-h-screen bg-gradient-to-br from-[#0F6E56] to-[#1D9E75] flex items-center justify-center px-6">
-        <div className="max-w-4xl text-center">
+      <section className="min-h-screen bg-gradient-to-br from-[#0F6E56] to-[#1D9E75] flex items-center justify-center px-6 relative">
+        <img src="/hero-bg.jpg" alt="Rooted Health clinic" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <div className="max-w-4xl text-center relative z-10">
           <h1 className="font-[family-name:var(--font-cormorant)] text-5xl sm:text-7xl font-light text-white tracking-tight leading-tight mb-6">
             Hormone & Metabolic Medicine Without Insurance Barriers
           </h1>
@@ -142,7 +143,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#1D9E75] mt-1">✓</span>
-                  <span className="text-white">Monthly metabolic monitoring</span>
+                  <span className="text-white">Weekly metabolic monitoring</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#1D9E75] mt-1">✓</span>
@@ -150,10 +151,10 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#1D9E75] mt-1">✓</span>
-                  <span className="text-white">MedSpa discounts included</span>
+                  <span className="text-white">Priority appointment scheduling</span>
                 </li>
               </ul>
-              <Link href="/contact" className="bg-white text-[#1E1D1A] hover:bg-[#F7F4EE] px-8 py-4 rounded-lg font-semibold transition-colors inline-block w-full text-center mt-8">
+              <Link href="/contact" className="bg-[#1D9E75] hover:bg-[#0F6E56] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-block w-full text-center mt-8">
                 Get Started
               </Link>
             </div>
@@ -161,110 +162,191 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#1E1D1A] text-white py-24 px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
-          <div>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-4xl text-white mb-6">
-              Medical Weight Loss That Actually Works
-            </h2>
-            <p className="text-white/80 leading-relaxed mb-8">
-              Our Elite GLP-1 program combines FDA-approved medications with comprehensive medical supervision, metabolic testing, and personalized coaching to help you achieve sustainable weight loss results.
-            </p>
-            <ul className="space-y-4 mb-10">
-              <li className="flex items-start gap-3">
-                <span className="text-[#1D9E75] mt-1">✓</span>
-                <span className="text-white">Medication, labs, and visits all included in one monthly fee</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#1D9E75] mt-1">✓</span>
-                <span className="text-white">Board-certified provider managing your entire care journey</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#1D9E75] mt-1">✓</span>
-                <span className="text-white">No insurance required, no prior authorization delays</span>
-              </li>
-            </ul>
-            <Link href="/quiz" className="border-2 border-white text-white hover:bg-white hover:text-[#1E1D1A] px-8 py-4 rounded-lg transition-colors inline-block font-semibold">
-              Start Your GLP-1 Journey
-            </Link>
-          </div>
-          <div className="space-y-6">
-            <div className="bg-white/10 rounded-xl p-6">
-              <div className="text-3xl font-bold text-white mb-2">15-20%</div>
-              <div className="text-white/70">Average body weight loss</div>
-            </div>
-            <div className="bg-white/10 rounded-xl p-6">
-              <div className="text-3xl font-bold text-white mb-2">$349/mo</div>
-              <div className="text-white/70">All-inclusive pricing with medication</div>
-            </div>
-            <div className="bg-white/10 rounded-xl p-6">
-              <div className="text-3xl font-bold text-white mb-2">Same Week</div>
-              <div className="text-white/70">Start date after enrollment</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-white py-24 px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
-          <div>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-4xl text-[#1E1D1A] mb-3">
-              Meet LaDonna Walker, NP
-            </h2>
-            <p className="text-[#7A7870] mb-6">
-              Board Certified Nurse Practitioner | Hormone & Metabolic Medicine Specialist
-            </p>
-            <p className="text-[#7A7870] leading-relaxed mb-4">
-              LaDonna Walker brings over a decade of clinical experience in hormone optimization, metabolic health, and primary care. Her passion for helping patients achieve optimal health led her to open Rooted Health, a direct-pay practice where she can spend real time with each patient without insurance limitations.
-            </p>
-            <p className="text-[#7A7870] leading-relaxed mb-8">
-              Specializing in bioidentical hormone replacement therapy, GLP-1 weight loss programs, thyroid management, and comprehensive primary care, LaDonna creates personalized treatment plans that address root causes rather than just symptoms. Her approach combines evidence-based medicine with a deep commitment to patient education and empowerment.
-            </p>
-            <Link href="/about" className="bg-[#1D9E75] hover:bg-[#0F6E56] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-block mt-8">
-              Learn More About Our Practice
-            </Link>
-          </div>
-          <div className="bg-[#E1F5EE] rounded-2xl h-96 w-full flex items-center justify-center text-[#7A7870] text-sm italic">
-            Provider Photo
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl sm:text-5xl text-center text-[#1E1D1A] mb-4">
+            Our Services
+          </h2>
+          <p className="text-[#7A7870] text-center mb-16 max-w-2xl mx-auto">
+            Comprehensive hormone optimization, metabolic health, and aesthetic treatments tailored to your unique needs.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Bioidentical Hormone Replacement
+              </h3>
+              <p className="text-[#7A7870]">
+                BHRT tailored to restore hormonal balance and vitality for men and women.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                GLP-1 Weight Loss
+              </h3>
+              <p className="text-[#7A7870]">
+                Medical weight loss using proven GLP-1 medications with comprehensive support.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Microdosing GLP-1
+              </h3>
+              <p className="text-[#7A7870]">
+                Optimized low-dose protocols for sustainable metabolic health and weight management.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Laser Hair Removal
+              </h3>
+              <p className="text-[#7A7870]">
+                Advanced laser technology for safe, effective permanent hair reduction.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                NAD+ Treatments
+              </h3>
+              <p className="text-[#7A7870]">
+                Cellular rejuvenation therapy for energy, mental clarity, and anti-aging benefits.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Fat Dissolving Injections
+              </h3>
+              <p className="text-[#7A7870]">
+                Non-surgical body contouring to reduce stubborn fat deposits.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Tattoo Removal
+              </h3>
+              <p className="text-[#7A7870]">
+                State-of-the-art laser technology for safe and effective tattoo removal.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Exclusive Injections
+              </h3>
+              <p className="text-[#7A7870]">
+                Premium injectable treatments for aesthetic enhancement and wellness.
+              </p>
+            </div>
+            <div className="p-6 border border-[#E2DDD4] rounded-xl hover:shadow-lg transition-shadow">
+              <h3 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-3">
+                Neova Skin Care
+              </h3>
+              <p className="text-[#7A7870]">
+                Medical-grade skincare products for optimal skin health and rejuvenation.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-[#F7F4EE] py-24 px-4 sm:px-6 lg:px-8">
-        <h2 className="font-[family-name:var(--font-cormorant)] text-4xl text-[#1E1D1A] text-center mb-16">
-          Patient Stories
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white rounded-2xl p-10 border border-[#E2DDD4] shadow-sm">
-            <div className="font-[family-name:var(--font-cormorant)] text-6xl text-[#1D9E75] leading-none mb-4">&ldquo;</div>
-            <p className="italic text-[#1E1D1A] text-lg mb-6">
-              After years of being dismissed by doctors who accepted insurance, LaDonna finally listened to me. She ran the right tests, found my hormone imbalances, and created a treatment plan that actually works. I feel like myself again for the first time in a decade.
-            </p>
-            <p className="font-semibold text-[#1E1D1A]">Sarah M.</p>
-            <p className="text-[#7A7870] text-sm">Conway, AR</p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="h-[500px] rounded-2xl overflow-hidden">
+            <img src="/clinical-1.jpg" alt="LaDonna Walker NP at Rooted Health" className="w-full h-full object-cover rounded-2xl" />
           </div>
-          <div className="bg-white rounded-2xl p-10 border border-[#E2DDD4] shadow-sm">
-            <div className="font-[family-name:var(--font-cormorant)] text-6xl text-[#1D9E75] leading-none mb-4">&ldquo;</div>
-            <p className="italic text-[#1E1D1A] text-lg mb-6">
-              The GLP-1 program changed my life. I have lost 45 pounds in six months, and more importantly, I have learned how to sustain it. Having everything included in one monthly price with no insurance hassles made this so simple. Worth every penny.
+          <div>
+            <h2 className="font-[family-name:var(--font-cormorant)] text-4xl sm:text-5xl text-[#1E1D1A] mb-6">
+              Meet LaDonna Walker, NP
+            </h2>
+            <p className="text-[#7A7870] text-lg mb-6 leading-relaxed">
+              As a board-certified nurse practitioner specializing in hormone optimization and metabolic medicine, LaDonna brings years of expertise in helping patients reclaim their health without insurance barriers.
             </p>
-            <p className="font-semibold text-[#1E1D1A]">Michael T.</p>
-            <p className="text-[#7A7870] text-sm">Little Rock, AR</p>
+            <p className="text-[#7A7870] text-lg mb-8 leading-relaxed">
+              Her approach combines evidence-based medicine with personalized care, ensuring each patient receives treatment tailored to their unique hormonal and metabolic needs.
+            </p>
+            <Link href="/about" className="text-[#1D9E75] font-semibold hover:text-[#0F6E56] transition-colors inline-flex items-center gap-2">
+              Learn More About Our Practice
+              <span>→</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-[#0F6E56] to-[#1D9E75] py-24 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl text-white mb-4">
+      <section className="bg-white py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl sm:text-5xl text-center text-[#1E1D1A] mb-4">
+            Real Results
+          </h2>
+          <p className="text-[#7A7870] text-center mb-16 max-w-2xl mx-auto">
+            Our patients experience transformative outcomes through personalized hormone optimization and metabolic treatments.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img src="/clinical-2.jpg" alt="Treatment results at Rooted Health" className="w-full h-80 object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img src="/clinical-3.jpg" alt="Patient transformation results" className="w-full h-80 object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img src="/clinical-4.jpg" alt="Clinical treatment outcomes" className="w-full h-80 object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F7F4EE] py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl sm:text-5xl text-center text-[#1E1D1A] mb-16">
+            What Our Patients Say
+          </h2>
+          <div className="grid gap-8">
+            <div className="bg-white p-8 rounded-2xl border border-[#E2DDD4] shadow-sm">
+              <p className="text-[#1E1D1A] text-lg mb-4 leading-relaxed">
+                "After years of feeling dismissed by traditional doctors, LaDonna actually listened and helped me optimize my hormones. I finally feel like myself again."
+              </p>
+              <p className="text-[#7A7870] font-semibold">— Sarah M.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border border-[#E2DDD4] shadow-sm">
+              <p className="text-[#1E1D1A] text-lg mb-4 leading-relaxed">
+                "The GLP-1 program changed my life. Down 45 pounds and my energy is through the roof. The direct-pay model makes it so affordable compared to my insurance plan."
+              </p>
+              <p className="text-[#7A7870] font-semibold">— Michael T.</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border border-[#E2DDD4] shadow-sm">
+              <p className="text-[#1E1D1A] text-lg mb-4 leading-relaxed">
+                "No more insurance hoops to jump through. Just quality care when I need it. The membership model is a game-changer for hormone therapy."
+              </p>
+              <p className="text-[#7A7870] font-semibold">— Jennifer L.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-[#0F6E56] to-[#1D9E75] py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-4xl sm:text-5xl text-white mb-6">
             Ready to Take Control of Your Health?
           </h2>
-          <p className="text-white/80 mb-10 text-lg">
-            Take our quick 2-minute quiz to find the perfect membership plan for your health goals. No obligation, no pressure.
+          <p className="text-white/90 text-xl mb-8 leading-relaxed">
+            Join hundreds of patients who've found better health through our direct-pay membership model.
           </p>
-          <Link href="/quiz" className="bg-white text-[#1D9E75] px-12 py-5 rounded-lg font-semibold text-lg hover:bg-[#F7F4EE] transition-colors inline-block shadow-lg">
-            Take the Membership Quiz
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <Link href="/quiz" className="bg-white text-[#1D9E75] px-10 py-5 rounded-lg font-semibold text-lg hover:bg-[#F7F4EE] transition-colors inline-block shadow-lg">
+              Take the Membership Quiz
+            </Link>
+            <Link href="/contact" className="bg-transparent border-2 border-white text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors inline-block">
+              Schedule a Consultation
+            </Link>
+          </div>
+          <div className="text-white/90 space-y-3">
+            <p className="text-lg">
+              <span className="font-semibold">Call:</span> <a href="tel:4798806148" className="hover:text-white transition-colors">(479) 880-6148</a>
+            </p>
+            <p className="text-lg">
+              <span className="font-semibold">Primary Location:</span> 1120 Hogan Lane Suite 2B, Conway, AR 72032
+            </p>
+            <p className="text-lg">
+              <span className="font-semibold">Spaah Satellite Clinic:</span> 2501 Dave Ward Drive, Conway, AR 72034 (monthly)
+            </p>
+          </div>
         </div>
       </section>
     </main>
