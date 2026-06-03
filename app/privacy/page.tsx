@@ -17,7 +17,7 @@ export default function PrivacyPage() {
             
             <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-4 mt-10">Who We Are</h2>
             <p className="text-[#7A7870] leading-relaxed mb-4">
-              Rooted Health Hormones & MedSpa LLC is a medical practice located in Conway, Arkansas, providing hormone therapy, aesthetic treatments, and wellness services. Our website is <a href="https://rootedhealthmember.com" className="text-[#1D9E75] underline">rootedhealthmember.com</a>. For questions about this Privacy Policy, please contact us at <a href="mailto:bekinditmatters@icloud.com" className="text-[#1D9E75] underline">bekinditmatters@icloud.com</a>.
+              Rooted Health Hormones & MedSpa LLC is a medical practice located in Conway, Arkansas, providing hormone therapy, aesthetic treatments, and wellness services. Our website is <a href="https://www.therootedhealth.net" className="text-[#1D9E75] underline">www.therootedhealth.net</a>. For questions about this Privacy Policy, please contact us at <a href="mailto:bekinditmatters@icloud.com" className="text-[#1D9E75] underline">bekinditmatters@icloud.com</a>.
             </p>
 
             <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-4 mt-10">Information We Collect</h2>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
               <strong>Rooted Health Hormones & MedSpa LLC</strong><br />
               Conway, Arkansas<br />
               Email: <a href="mailto:bekinditmatters@icloud.com" className="text-[#1D9E75] underline">bekinditmatters@icloud.com</a><br />
-              Website: <a href="https://rootedhealthmember.com" className="text-[#1D9E75] underline">rootedhealthmember.com</a>
+              Website: <a href="https://www.therootedhealth.net" className="text-[#1D9E75] underline">www.therootedhealth.net</a>
             </p>
 
             <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-[#1E1D1A] mb-4 mt-10">Changes to This Policy</h2>

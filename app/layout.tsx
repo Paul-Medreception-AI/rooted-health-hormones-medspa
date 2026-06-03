@@ -39,7 +39,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Rooted Health Hormones & MedSpa',
   description: 'Cash-pay hormone therapy, GLP-1 weight loss, Botox, and primary care in Conway, AR. Memberships from $99/mo. No insurance required.',
-  url: 'https://rootedhealthmember.com',
+  url: 'https://www.therootedhealth.net',
   telephone: '+14798806148',
   email: 'rootedhealthormones@gmail.com',
   address: {

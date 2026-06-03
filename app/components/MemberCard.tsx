@@ -11,7 +11,7 @@ interface MemberCardProps {
 }
 
 export default function MemberCard({ memberId, name, plan, status, memberSince }: MemberCardProps) {
-  const verifyUrl = `https://rootedhealthmember.com/verify/${memberId}`
+  const verifyUrl = `https://www.therootedhealth.net/verify/${memberId}`
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-3">

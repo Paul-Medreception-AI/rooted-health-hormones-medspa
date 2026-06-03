@@ -1,7 +1,7 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses'
 import { NextRequest, NextResponse } from 'next/server'
 
-const FROM = process.env.SES_FROM_EMAIL ?? 'notify@rootedhealthmember.com'
+const FROM = process.env.SES_FROM_EMAIL ?? 'notify@therootedhealth.net'
 const REPLY_TO = 'rootedhealthormones@gmail.com'
 
 type NotifyType = 'welcome' | 'booking_confirm' | 'quiz_complete' | 'membership_reminder'
@@ -79,7 +79,7 @@ function quizCompleteHtml(name: string, result?: string) {
         <p style="color:#7A7870;line-height:1.7;">Based on your quiz answers, here is your recommended plan:</p>
         ${result ? `<div style="background:#E1F5EE;border:2px solid #1D9E75;border-radius:12px;padding:24px;margin:24px 0;text-align:center;"><p style="color:#0F6E56;font-size:20px;font-weight:600;margin:0;">${result}</p></div>` : ''}
         <div style="text-align:center;margin:32px 0;">
-          <a href="https://rootedhealthmember.com/memberships" style="background:#1D9E75;color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;display:inline-block;">See Full Plan Details</a>
+          <a href="https://www.therootedhealth.net/memberships" style="background:#1D9E75;color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;display:inline-block;">See Full Plan Details</a>
         </div>
         <p style="color:#7A7870;font-size:14px;">Ready to get started? Book a free consultation at <a href="https://rootedhealth.janeapp.com/" style="color:#1D9E75;">rootedhealth.janeapp.com</a> or call <a href="tel:4798806148" style="color:#1D9E75;">(479) 880-6148</a>.</p>
       </div>

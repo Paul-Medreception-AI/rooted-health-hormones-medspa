@@ -100,7 +100,7 @@ export default function SMSTermsPage() {
                 Contact
               </h2>
               <p className="font-[family-name:var(--font-dm-sans)] text-[#1E1D1A] leading-relaxed">
-                Rooted Health Hormones & MedSpa LLC | Conway, AR | bekinditmatters@icloud.com | rootedhealthmember.com
+                Rooted Health Hormones & MedSpa LLC | Conway, AR | bekinditmatters@icloud.com | www.therootedhealth.net
               </p>
             </div>
           </div>

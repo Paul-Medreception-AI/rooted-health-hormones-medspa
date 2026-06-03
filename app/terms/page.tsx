@@ -23,7 +23,7 @@ export default function TermsPage() {
                 1. Acceptance of Terms
               </h2>
               <p className="text-lg leading-relaxed text-[#7A7870]">
-                By accessing and using rootedhealthmember.com, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use this website.
+                By accessing and using www.therootedhealth.net, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use this website.
               </p>
             </div>
 

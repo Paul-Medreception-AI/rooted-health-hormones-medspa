@@ -120,7 +120,7 @@ export default function ContactPage() {
                   Schedule your appointment instantly through our online booking system powered by Jane App.
                 </p>
                 <a
-                  href="https://rootedhealthmember.com"
+                  href="https://www.therootedhealth.net"
                   className="font-[family-name:var(--font-dm-sans)] bg-[#1D9E75] hover:bg-[#0F6E56] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-block text-center w-full"
                 >
                   Book Appointment Online
@@ -145,8 +145,8 @@ export default function ContactPage() {
                   
                   <div>
                     <h3 className="font-semibold text-[#0F6E56] mb-1">Website</h3>
-                    <a href="https://rootedhealthmember.com" className="text-[#1D9E75] hover:text-[#0F6E56] transition-colors">
-                      rootedhealthmember.com
+                    <a href="https://www.therootedhealth.net" className="text-[#1D9E75] hover:text-[#0F6E56] transition-colors">
+                      www.therootedhealth.net
                     </a>
                   </div>
 
