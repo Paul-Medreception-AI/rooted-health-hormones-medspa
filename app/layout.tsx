@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 import MobileNav from './components/MobileNav'
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 const cormorant = Cormorant_Garamond({ 
   subsets: ['latin'], 
   weight: ['400', '500', '600', '700'], 
@@ -14,6 +15,9 @@ const dmSans = DM_Sans({
   weight: ['300', '400', '500', '600'], 
   variable: '--font-dm-sans' 
 })
+
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 export const metadata: Metadata = {
   icons: {
@@ -225,6 +229,8 @@ export default function RootLayout({
           </div>
         </footer>
       </body>
+      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+
     </html>
   )
 }
